@@ -3,45 +3,30 @@ import styled from 'styled-components';
 
 import withTouchDetect from './withTouchDetect'
 
-const TouchDetectButton = withTouchDetect(
-  styled.button`
-      color: red;
+const TouchDetectButton = withTouchDetect(styled.button`
+    color: ${ props => (props.touchStart ? 'red' : 'white')};
   `
 );
 
 class App extends Component {
-
-  // state = { hasTouch: false }
-
-  handleTouch() {
-    // this.setState({ hasTouch: !this.state.hasTouch })
-  }
-  handleFinalClick() {
-    // this.state.hasTouch
-    //   ? console.log('opening dropdown')
-    //   : console.log('opening link')
+  handleClick = () => {
+    this.props.touchStart
+      ? console.log('supposed to get dropdown')
+      : console.log('supposed to get navigation')
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.props.touchStart);
 
     return (
       <div>
-
         <TouchDetectButton
-          onClick={this.handleFinalClick.bind(this)}>
-          Click
-        </TouchDetectButton>
-
-        <TouchDetectButton
-          onClick={this.handleFinalClick.bind(this)}
-          onTouchStart={this.handleTouch.bind(this)}
-          onTouchEnd={this.handleTouch.bind(this)}
-        >
+          onClick={this.handleClick}
+          className="poop">
           Touch
         </TouchDetectButton>
 
-        {/* <div>hasTouch: {this.state.hasTouch ? 'true' : 'false'}</div> */}
+        {/* <div>hasTouch: {this.props.touchStart ? 'true' : 'false'}</div> */}
       </div>
     );
   }

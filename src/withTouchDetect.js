@@ -14,11 +14,13 @@ export default function withTouchDetect(WrappedComponent) {
         render() {
             const { hasTouch } = this.state;
             const { className, ...rest } = this.props;
+            console.log(this.state.hasTouch);            
             return (
                 <WrappedComponent
                     onTouchStart={this.handleTouchToggle}
                     onTouchEnd={this.handleTouchToggle}
                     className={cx(className, { touchStart: hasTouch })}
+                    touchStart={hasTouch}
                     {...rest}
                 />
             );
