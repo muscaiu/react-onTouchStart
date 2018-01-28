@@ -11,8 +11,8 @@ const TouchDetectButton = withTouchDetect(styled.button`
 class App extends Component {
   handleClick = () => {
     this.props.touchStart
-      ? console.log('supposed to get dropdown')
-      : console.log('supposed to get navigation')
+      ? console.log('that was a tap')
+      : console.log('that was a click')
   }
 
   render() {
@@ -20,6 +20,8 @@ class App extends Component {
 
     return (
       <div>
+        Try click / tap and check console.
+        <br/> <br/> <br/>
         <TouchDetectButton
           onClick={this.handleClick}
           className="poop">
